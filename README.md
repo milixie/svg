@@ -37,8 +37,7 @@
 </svg>
 ```
 
-![查看效果](https://github.com/milixie/svg/image/1.jpeg)
-
+[查看效果](https://github.com/milixie/svg/blob/master/image/1.jpeg)
 
 ### SVG 动画 （SVG SMIL Animation）
 

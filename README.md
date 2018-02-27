@@ -151,7 +151,6 @@ T命令前面必须是一个Q命令，或者是另一个T命令，才能达到�
 `<path d="M 100 700 Q 200 500, 500 700 T 800 700" stroke="blue" fill="transparent"/>`
 
 
-
 写文字使用`text`
 
 - `fill` 表示的是填充面颜色
@@ -159,6 +158,53 @@ T命令前面必须是一个Q命令，或者是另一个T命令，才能达到�
 - `stroke` 表示线颜色
 
 - `svg` 里面的 `viewBox="0 0 300 200"` 定义了画布上可以显示的区域为 (0,0) -> (300,200)，如果这里定义的值小于svg里面的width/height，那么图会被相应的放大
+
+### SVG 渐变
+
+- 线性渐变
+
+```
+<svg version="1.1" width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
+	<linearGradient id="gradient1">
+		<stop offset="0%" stop-color="red"/>
+		<stop offset="60%" stop-color="blue"/>
+		<stop offset="80%" stop-color="yellow"/>
+		<stop offset="100%" stop-color="lightblue"/>
+	</linearGradient>
+
+	<rect x="100" y="100" rx="20" ry="20" width="300" height="300" fill="url(#gradient1)"/>
+</svg>
+```
+
+- 径向渐变
+
+```
+<radialGradient id="gradient2" cx="0.2" cy="0.5" r="0.5" fx="0.5" fy="0.25">
+	<stop offset="0%" stop-color="yellow"/>
+	<stop offset="40%" stop-color="blue"/>
+	<stop offset="100%" stop-color="red"/>
+</radialGradient>
+
+<rect x="100" y="500" rx="20" ry="40" width="200" height="200" fill="url(#gradient2)"/>
+```
+
+- 图案
+
+```
+<pattern id="Pattern" x="0" y="0" width=".25" height=".25">
+    <rect x="0" y="0" width="70" height="70" fill="skyblue"/>
+    <rect x="0" y="0" width="20" height="20" fill="url(#gradient2)"/>
+    <circle cx="40" cy="40" r="20" fill="url(#gradient1)" fill-opacity="0.5"/>
+  </pattern>
+
+  <rect fill="url(#Pattern)" stroke="black" x="500" y="100" width="400" height="400"/>
+```
+
+
+### SVG 变形
+
+
+
 
 ### SVG 动画 （SVG SMIL Animation）
 

@@ -12,11 +12,15 @@
 	<path d="M 100 500 C 200 600, 400 600, 500 500 " stroke="red" fill="transparent"/>
 	<path d="M 500 500 C 600 400, 800 400, 900 500 " stroke="red" fill="transparent"/>
 
-	<path d="M 100 200 C 200 300, 300 200, 400 200 S 600 100, 600 200" stroke="green" fill="transparent"/>
+	<path d="M 100 200 C 200 300, 300 200, 400 200 S 600 100, 600 200" stroke="green" fill="transparent"  stroke-width="20"  stroke-linecap="round"/>
 
 	<path d="M 100 300 S 600 100, 600 300" stroke="green" fill="transparent"/>
 
 	<path d="M 100 600 Q 350 300, 600 600" stroke="green" fill="transparent"/>
 
 	<path d="M 100 700 Q 200 500, 500 700 T 800 700" stroke="blue" fill="transparent"/>
+
+	<line x1="40" x2="120" y1="20" y2="20" stroke="black" stroke-width="20" stroke-linecap="butt"/>
+  <line x1="40" x2="120" y1="60" y2="60" stroke="black" stroke-width="20" stroke-linecap="square"/>
+  <line x1="40" x2="120" y1="100" y2="100" stroke="black" stroke-width="20" stroke-linecap="round"/>
 </svg>

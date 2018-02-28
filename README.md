@@ -157,6 +157,8 @@ T命令前面必须是一个Q命令，或者是另一个T命令，才能达到�
 
 - `stroke` 表示线颜色
 
+- `opacity` 定义透明度
+
 - `svg` 里面的 `viewBox="0 0 300 200"` 定义了画布上可以显示的区域为 (0,0) -> (300,200)，如果这里定义的值小于svg里面的width/height，那么图会被相应的放大
 
 ### SVG 渐变
@@ -203,8 +205,77 @@ T命令前面必须是一个Q命令，或者是另一个T命令，才能达到�
 
 ### SVG 变形
 
+`<g>` 可以用来把属性赋给一整个元素集合
+
+```
+<svg version="1.1" width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
+	<g fill="red">
+		<rect x="0" y="0" width="100" height="100" transform="translate(30,30)"/>
+  	<rect x="200" y="100" width="100" height="100" transform="scale(0.8)"/>
+  	<rect x="400" y="10" width="100" height="100" transform="rotate(30)"/>
+  	<rect x="400" y="10" width="100" height="100" transform="skewX(30)"/>
+	</g>
+</svg>
+```
 
 
+### SVG 剪切和遮罩
+
+##### 剪切：
+比如想要画一个半圆或者多半圆这种的就需要用到剪切，它使用的是 `clipPath` 这个属性
+
+```
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <clipPath id="cut-off-bottom">
+      <rect x="0" y="0" width="200" height="120" fill="red"/>
+    </clipPath>
+
+    <clipPath id="cut-off-circle">
+    	<rect x="0" y="120" width="200" height="200"></rect>
+    </clipPath>
+  </defs>
+
+  <circle cx="100" cy="100" r="80" clip-path="url(#cut-off-bottom)" fill="blue" opacity="0.3"/>
+
+  <ellipse cx="100" cy="300" rx="60" ry="50" clip-path="url(#cut-off-circle)" fill="green" opacity="0.3"/>
+</svg>
+```
+
+
+*注意* 
+剪切的实际效果就是取 `clipPath` 里面的属性与使用剪切效果的图的交集
+
+##### 遮罩
+
+```
+<defs>
+  <linearGradient id="Gradient">
+    <stop offset="0" stop-color="white" stop-opacity="0" />
+    <stop offset="1" stop-color="white" stop-opacity="1" />
+  </linearGradient>
+  <mask id="Mask">
+    <rect x="100" y="300" width="200" height="200" fill="url(#Gradient)"  />
+  </mask>
+</defs>
+
+<rect x="100" y="400" width="200" height="200" fill="green" />
+<rect x="100" y="400" width="200" height="200" fill="blue" mask="url(#Mask)" />
+```
+
+遮罩效果最大的效用就是表现为淡出的渐变效果
+
+
+### SVG 嵌入普通图
+
+```
+<svg version="1.1"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="200" height="200">
+  <image x="90" y="-65" width="128" height="146" transform="rotate(65)"
+     xlink:href="https://developer.mozilla.org/media/img/mdn-logo.png"/>
+</svg>
+```
 
 ### SVG 动画 （SVG SMIL Animation）
 
@@ -221,11 +292,73 @@ SMIL: 允许做以下事情：
 
 - 沿着运动路径运动
 
+SVG 动画
+
+```
+<set>
+<animate>
+<animateColor>
+<animateTransform>
+<animateMotion>
+```
+
+#### set 效果
+
+`set` 并没有动画的效果，但是它可以延迟设置相应的属性，从而实现的基本的一个延迟动画的效果
+
+```
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<rect x="10" y="10" width="20" height="20" fill="red">
+		<set attributeName="x" attributeType="XML" to="60" begin="3s" />
+	</rect>
+
+	<text x="30" y="100" fill="yellow" font-size="50" stroke="blue" stroke-width="1">
+		马儿跑
+		<set attributeName="x" attributeType="XML" to="60" begin="2s" />
+	</text>
+</svg>
+
+```
+
+可以查看相应效果，发现只会在对应时间点直接生硬的移动到某个位置，而不会有连续动画的效果
 
 
+#### `animate` 基础动画效果
+
+```
+<text x="30" y="200" fill="yellow" font-size="50" stroke="blue" stroke-width="1">
+		马儿跑animate
+		<animate attributeName="x" from="30" to="160" begin="0s" dur="3s" repeatCount="indefinite" />
+	</text>
+```
+
+里面的元素
+
+- attributeName 表示动画指定的属性
+
+- from 表示初始位置
+
+- to 表示目标位置
+
+- begin 表示开始时间
+
+- dur 表示动画时长
+
+- repeatCount 表示动画的次数，连续动画 `indefinite` or 数字
+
+运用这个属性，可以制作一个简单的音乐播放效果的动图svg
+
+[查看效果文件](https://github.com/milixie/svg/blob/master/demo/music.svg)
 
 
+#### `animateTransform` 用来实现变换的动画效果
 
+```
+<g>
+	<text x="30" y="300" fill="yellow" font-size="50" stroke="blue" stroke-width="1">马儿跑animateTransform</text>
+	<animateTransform attributeName="transform" begin="0s" dur="3s" type="scale" from="1" to="1.5" repeatCount="indefinite" />
+</g>
+```
 
 
 

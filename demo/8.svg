@@ -1,0 +1,22 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<rect x="10" y="10" width="20" height="20" fill="red">
+		<set attributeName="x" attributeType="XML" to="60" begin="3s" />
+	</rect>
+
+	<text x="30" y="100" fill="yellow" font-size="50" stroke="blue" stroke-width="1">
+		马儿跑set
+		<set attributeName="y" attributeType="XML" to="60" begin="2s" />
+	</text>
+
+
+	<text x="30" y="200" fill="yellow" font-size="50" stroke="blue" stroke-width="1">
+		马儿跑animate
+		<animate attributeName="x" from="30" to="160" begin="0s" dur="3s" repeatCount="3" />
+	</text>
+
+	<g>
+		<text x="30" y="300" fill="yellow" font-size="50" stroke="blue" stroke-width="1">马儿跑animateTransform</text>
+		<animateTransform attributeName="transform" begin="0s" dur="3s" type="scale" from="1" to="1.5" repeatCount="indefinite" />
+		<animateTransform attributeName="transform" begin="0s" dur="3s" type="rotate" from="0" to="30" repeatCount="indefinite" />
+	</g>
+</svg>

@@ -334,7 +334,7 @@ SVG 动画
 
 里面的元素
 
-- attributeName 表示动画指定的属性
+- attributeName 表示动画指定的属性，它的值有 `x` `y` `opacity` `transform` 等
 
 - from 表示初始位置
 
@@ -353,6 +353,8 @@ SVG 动画
 
 #### `animateTransform` 用来实现变换的动画效果
 
+代码如下
+
 ```
 <g>
 	<text x="30" y="300" fill="yellow" font-size="50" stroke="blue" stroke-width="1">马儿跑animateTransform</text>
@@ -360,16 +362,64 @@ SVG 动画
 </g>
 ```
 
+#### `animateMotion` 让SVG各种图形沿着特定的 `path` 路径运动
+
+```
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="500">
+	<text font-family="microsoft yahei" font-size="40" x="0" y="0" fill="#cd0000">马
+    <animateMotion path="M 10 100 C 20 200 60 30 200 300 Q 150 100, 300 200" begin="0s" dur="5s" rotate="auto" repeatCount="indefinite"/>
+  </text>
+	<path d="M 10 100 C 20 200 60 30 200 300 Q 150 100, 300 200" stroke="red" fill="transparent"></path>
+</svg>
+```
 
 
+这里的属性值
+
+- path 表示运动路径
+
+- rotate = ”auto“ 表示可以按照物理学原理去运动，而不是生硬的头朝上运动
 
 
+#### 自由组合效果
+
+马儿沿着轨迹运动的效果
+```
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="10000" height="10000">
+	<g>
+		<path d="M 150 1000 C 300 200 900 600 300 300 Q 400 200 500 10" fill="transparent" stroke="gray" stroke-width="50" />
+		<text x="-50" y="10" font-size="60">🐴
+			<animateMotion path="M 150 1000 C 300 200 900 600 300 300 Q 400 200 500 10" begin="0s" dur="15s" repeatCount="indefinite"/>
+			<animate attributeName="opacity" from="1" to="0.3" begin="0s" dur="15s" repeatCount="indefinite" />
+		</text>
+	</g>
+</svg>
+```
+
+[查看效果文件](https://github.com/milixie/svg/blob/master/demo/horse.svg)
 
 
+loading图效果
 
+```
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="120px" height="120px" viewBox="0 0 128 128" xml:space="preserve">
+	<script type="text/ecmascript" xlink:href="//preloaders.net/jscripts/smil.user.js"/>
+	<g>
+		<circle cx="16" cy="64" r="16" fill="#f0f0f0"/>
+		<circle cx="16" cy="64" r="14.344" fill="#f0f0f0" transform="rotate(45 64 64)"/>
+		<circle cx="16" cy="64" r="12.531" fill="#f0f0f0" transform="rotate(90 64 64)"/>
+		<circle cx="16" cy="64" r="10.75" fill="#f0f0f0" transform="rotate(135 64 64)"/>
+		<circle cx="16" cy="64" r="10.063" fill="#f0f0f0" transform="rotate(180 64 64)"/>
+		<circle cx="16" cy="64" r="8.063" fill="#f0f0f0" transform="rotate(225 64 64)"/>
+		<circle cx="16" cy="64" r="6.438" fill="#f0f0f0" transform="rotate(270 64 64)"/>
+		<circle cx="16" cy="64" r="5.375" fill="#f0f0f0" transform="rotate(315 64 64)"/>
+		<animateTransform attributeName="transform" type="rotate" values="0 64 64;315 64 64;270 64 64;225 64 64;180 64 64;135 64 64;90 64 64;45 64 64" calcMode="discrete" dur="640ms" repeatCount="indefinite"></animateTransform>
+	</g>
+</svg>
+```
 
-
-
+[查看效果文件](https://github.com/milixie/svg/blob/master/demo/loading.svg)
 
 
 

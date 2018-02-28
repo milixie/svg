@@ -1,0 +1,6 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="500" height="500">
+	<text font-family="microsoft yahei" font-size="40" x="0" y="0" fill="#cd0000">马
+    <animateMotion path="M 10 100 C 20 200 60 30 200 300 Q 150 100, 300 200" begin="0s" dur="5s" rotate="auto" repeatCount="indefinite"/>
+  </text>
+	<path d="M 10 100 C 20 200 60 30 200 300 Q 150 100, 300 200" stroke="red" fill="transparent"></path>
+</svg>

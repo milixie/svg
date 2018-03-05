@@ -1,6 +1,6 @@
 <svg version="1.1" 
 	xmlns="http://www.w3.org/2000/svg"
-	width="200" height="200" viewBox="0 0 200 200">
+	width="500" height="500" viewBox="0 0 500 500">
 	<style>
 		@keyframes changeScale{
 			0% {  width:100px; height:100px; top:110px; left:110px;}

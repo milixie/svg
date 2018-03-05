@@ -17,6 +17,5 @@
 	<g>
 		<text x="30" y="300" fill="yellow" font-size="50" stroke="blue" stroke-width="1">马儿跑animateTransform</text>
 		<animateTransform attributeName="transform" begin="0s" dur="3s" type="scale" from="1" to="1.5" repeatCount="indefinite" />
-		<animateTransform attributeName="transform" begin="0s" dur="3s" type="rotate" from="0" to="30" repeatCount="indefinite" />
 	</g>
 </svg>

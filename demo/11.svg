@@ -1,0 +1,13 @@
+<svg version="1.1" 
+	xmlns="http://www.w3.org/2000/svg"
+	width="500" height="500" viewBox="0 0 500 500">
+	<polygon fill="red" points="50,100 100,100 150,50 200,100 250,100 150,200 50,100">
+		<animate attributeName="points" values="50,100 100,100 150,50 200,100 250,100 150,200 50,100; 0,100 50,100 150,0 250,100 300,100 150,250 0,100 ; 50,100 100,100 150,50 200,100 250,100 150,200 50,100" begin="0s" dur="3s" repeatCount="indefinite"/>
+		<animate attributeName="fill" values="red; blue; red" begin="0s" dur="3s" repeatCount="indefinite"/>
+	</polygon>
+	<circle cx="150" cy="125" r="25" fill="green">
+		<animate attributeName="r" values="25;75;25" begin="0s" dur="3s" repeatCount="indefinite"/>
+		<animate attributeName="fill" values="green; yellow; green" begin="0s" dur="3s" repeatCount="indefinite"/>
+	</circle>
+
+</svg>

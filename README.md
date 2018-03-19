@@ -124,6 +124,31 @@
 - `Z` or `z` 是闭合路径命令
 
 
+弧线：
+
+绘制弧线需要使用A命令绘制，与线段一样，大写命令（A）对其终点使用绝对坐标，而小写名（a）使用相对坐标（相对于起点）
+
+`A rx,ry x-axis-rotation large-arc-flag,sweep-flag x,y` or
+
+`a rx ry x-axis-rotation large-arc-flag sweep-flag dx dy`
+
+写法 `<path d="M 40,20  A 30,30 0 1,1 60,70">`
+
+>- rx 是 x 方向上的半径
+
+>- ry 是 y 方向上的半径
+
+>- x-axis-rotation 设置相对于正常x轴旋转一定角度的弧的x轴
+
+>- large-arc-flag
+决定弧线是大于还是小于180度，0表示小角度弧，1表示大角度弧
+
+>- sweep-flag 弧线的方向，0表示从起点到终点沿逆时针画弧，1表示从起点到终点沿顺时针画弧
+
+>- x，y 终点的位置
+
+>- dx, dy 终点的相对值
+
 曲线：
 
 贝塞尔曲线

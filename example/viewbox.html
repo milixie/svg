@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test</title>
+	<style type="text/css">
+		svg {
+			border: 1px solid green;
+		}
+	</style>
+</head>
+<body>
+	<h3>1.svg宽高和viewBox里面的宽高相同</h3>
+	<p>这是一个120 * 120 的svg，它的 viewBox="0 0 120 120" 这个时候展示出的rect还是原来的尺寸</p>
+	<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="120" height="120" viewBox="0 0 120 120">
+		<rect x="10" y="10" width="100" height="100" fill="red"/>	
+	</svg>
+	<h3>2.svg宽高 小于 viewBox里面的宽高 并且同比例时</h3>
+	<p>这是一个120 * 120 的svg，它的 viewBox="0 0 360 360"，发现这个时候展示出来的rect缩小了3倍</p>
+	<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="120" height="120" viewBox="0 0 360 360">
+		<rect x="10" y="10" width="100" height="100" fill="red"/>	
+	</svg>
+	<h3>3. svg宽高 大于 viewBox里面的宽高 并且同比例时</h3>
+	<p>这是一个120 * 120 的svg，它的 viewBox="0 0 40 40"，发现这个时候展示出来的rect放大了3倍，并且多出svg的部分被裁剪了</p>
+	<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="120" height="120" viewBox="0 0 40 40">
+		<rect x="10" y="10" width="100" height="100" fill="red"/>	
+	</svg>
+
+	<h3>4. svg的宽和viewBox里面的宽一样，高不一样</h3>
+	<p>这是一个120 * 120 的svg，它的 viewBox="0 0 120 40"，发现这个时候展示出来的rect还是原来的尺寸，但是多出svg的部分被裁剪了</p>
+	<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="120" height="120" viewBox="0 0 120 40">
+		<rect x="10" y="10" width="100" height="100" fill="red"/>	
+	</svg>
+	<p>这是一个120 * 120 的svg，它的 viewBox="0 0 120 240"，发现这个时候展示出来的rect缩小了2倍</p>
+	<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="120" height="120" viewBox="0 0 120 240">
+		<rect x="10" y="10" width="100" height="100" fill="red"/>	
+	</svg>
+
+	<h3>5. svg的高和viewBox里面的高一样，宽度不一样时</h3>
+	<p>这是一个120 * 120 的svg，它的 viewBox="0 0 40 120"，发现这个时候展示出来的rect还是原来的尺寸，但是多出svg的部分被裁剪了</p>
+	<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="120" height="120" viewBox="0 0 40 120">
+		<rect x="10" y="10" width="100" height="100" fill="red"/>	
+	</svg>
+	<p>这是一个120 * 120 的svg，它的 viewBox="0 0 240 120"，发现这个时候展示出来的rect缩小了2倍</p>
+	<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="120" height="120" viewBox="0 0 240 120">
+		<rect x="10" y="10" width="100" height="100" fill="red"/>	
+	</svg>
+
+	<h3>6. svg的宽高和viewBox里面的宽高不一样，并且两者的宽高比例不一致时</h3>
+	<p>这是一个120 * 120 的svg，它的 viewBox="0 0 60 180"，发现这个时候展示出来的rect成了原来尺寸的2/3</p>
+	<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="120" height="120" viewBox="0 0 60 180">
+		<rect x="10" y="10" width="100" height="100" fill="red"/>	
+	</svg>
+	<p>这是一个120 * 120 的svg，它的 viewBox="0 0 180 60"，发现这个时候展示出来的rect成了原来尺寸的2/3</p>
+	<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="120" height="120" viewBox="0 0 180 60">
+		<rect x="10" y="10" width="100" height="100" fill="red"/>	
+	</svg>
+
+	<h3>
+		总结：
+		1. 设 svg 的宽高分别是 svgW， svgH； 设 viewBox 中的宽高分别是 viewW，viewH
+
+		pxW = svgW / viewW;
+		pxH = svgH / viewH;
+
+		取两者中的最小值 m = min(pxW, pxH)
+		里面的 rect 的 width = svgW * m， height = svgH * m
+	</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

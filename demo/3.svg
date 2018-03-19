@@ -14,7 +14,7 @@
 
 	<path d="M 100 200 C 200 300, 300 200, 400 200 S 600 100, 600 200" stroke="green" fill="transparent"  stroke-width="20"  stroke-linecap="round"/>
 
-	<path d="M 100 300 S 600 100, 600 300" stroke="green" fill="transparent"/>
+	<path d="M 100 300 S 350 500, 600 300" stroke="green" fill="transparent"/>
 
 	<path d="M 100 600 Q 350 300, 600 600" stroke="green" fill="transparent"/>
 

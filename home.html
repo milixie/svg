@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test</title>
+</head>
+<body>
+<a href="http://7xj5et.com1.z0.glb.clouddn.com/svg/rect.svg">rect例子</a>
+<a href="http://7xj5et.com1.z0.glb.clouddn.com/svg/circle.svg">圆与椭圆</a>
+<a href="http://7xj5et.com1.z0.glb.clouddn.com/svg/line.svg">线条</a>
+<a href="http://7xj5et.com1.z0.glb.clouddn.com/svg/polyline.svg">折线/多边形</a>
+<a href="http://7xj5et.com1.z0.glb.clouddn.com/svg/path.svg">path绘制路径</a>
+<a href="http://7xj5et.com1.z0.glb.clouddn.com/svg/gradient.svg">渐变和图案</a>
+<a href="http://7xj5et.com1.z0.glb.clouddn.com/svg/set.svg">svg动画</a>
+
+<svg version="1.1" id="svg1"
+	xmlns="http://www.w3.org/2000/svg"
+	width="1500" height="200">
+
+	<text x="10" y="80">这是无限循环的 需要设置 repeatCount="indefinite" 属性 可以设置多个animate不同的属性，这里通过点击圆开始动画</text>
+	<circle id="circle1" cx="100" cy="150" r="50" fill="lightblue">
+		<animate attributeName="cx" attributeType="XML" values="100;500;100" begin="circle1.click" dur="10s" repeatCount="indefinite"/>
+		<animate attributeName="fill" attributeType="XML" values="lightblue;blue;lightblue" begin="circle1.click" dur="10s" repeatCount="indefinite"/>
+		<animate attributeName="r" attributeType="XML" values="50;10;50" begin="circle1.click" dur="10s" repeatCount="indefinite"/>
+	</circle>
+
+</svg>
+
+<svg id="svg2" version="1.1" 
+	xmlns="http://www.w3.org/2000/svg"
+	width="1500" height="200">
+
+	<text x="10" y="80">这是无限循环的 需要设置 repeatCount="indefinite" 属性 可以设置多个animate不同的属性</text>
+	<circle cx="100" cy="150" r="50" fill="lightblue">
+		<animate attributeName="cx" attributeType="XML" values="100;500;100" begin="1s" dur="10s" repeatCount="indefinite"/>
+		<animate attributeName="fill" attributeType="XML" values="lightblue;blue;lightblue" begin="1s" dur="10s" repeatCount="indefinite"/>
+		<animate attributeName="r" attributeType="XML" values="50;10;50" begin="1s" dur="10s" repeatCount="indefinite"/>
+	</circle>
+
+</svg>
+
+<button type="button" id="btn1">暂停动画</button>
+<button type="button" id="btn2">开始动画</button>
+<script type="text/javascript">
+	window.onload = function() {
+		const svg = document.getElementById('svg2');
+		const btn1 = document.getElementById('btn1');
+		const btn2 = document.getElementById('btn2');
+		btn1.onclick = function() {
+			svg.pauseAnimations();
+		}
+		btn2.onclick = function() {
+			svg.unpauseAnimations()
+		}
+	}
+</script>
+</body>
+</html>

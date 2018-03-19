@@ -1,10 +1,20 @@
 <svg version="1.1" 
-	baseProfile="full" 
 	width="300" 
 	height="200"
-	viewBox="0 0 300 200"
   xmlns="http://www.w3.org/2000/svg">
-  <rect x="0" y="0" width="100%" height="100%" fill="blue"/>
-  <circle cx="150" cy="100" r="80" fill="red"/>
-  <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
+  <rect x="0" y="0" rx="20" ry="10" width="300" height="200" fill="green"/>
+  <circle cx="150" cy="100" r="80" fill="yellow"/>
+  <ellipse rx="100" ry="50" cx="150" cy="100"/>
+  <text x="150" y="125" font-size="60" text-anchor="middle" fill="red">SVG</text>
 </svg>
+
+/*
+>- calcMode：它的值有以下四个 [查看不同效果](http://www.zhangxinxu.com/study/201408/svg-animation-calcmode.html)
+    - discrete：离散，从from 直接跳到 to
+    - linear：线性，速率不变
+    - paced：通过插值让动画的变化步调平稳均匀
+    - spline：插值定义贝塞尔曲线
+>- keyTimes：定义关键时间点，keyTimes=“0；0.8；1”
+>- keySplines：定义贝塞尔曲线的两个控制点
+
+![具体参数意义](http://7xj5et.com1.z0.glb.clouddn.com/svg/15.png)*/

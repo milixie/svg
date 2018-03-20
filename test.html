@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+	<style type="text/css">
+		button {
+			padding: 6px 10px;
+			border: 1px solid #ddd;
+			outline: none;
+		}
+		.box {
+			position: relative;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			margin: 20px;
+			background: red;
+			transition: all 3s;
+		}
+		.animate1 {
+			transform: translate(300px, 10px);
+		}
+		.animate2 {
+			animation: animate 3s;
+		}
+		@keyframes animate {
+			0% {
+				left: 0;
+			}
+			100% {
+				left: 300px
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<button id="#btn1">点击box开始移动</button>
+	<div class="box" id="#box1"></div>
+	<div class="box animate2" id="#box2"></div>
+	<div class="box" id="#box3"></div>
+	<ul id="#ul">
+		<li>11111111</li>
+		<li>22222222</li>
+		<li>33333333</li>
+		<li>44444444</li>
+		<li>55555555</li>
+		<li>66666666</li>
+	</ul>
+	<script type="text/javascript">
+		window.onload = function() {
+			const btn = document.getElementById('#btn1');
+			const box1 = document.getElementById('#box1');
+			const originClass = box1.getAttribute('class');
+			const newClass = originClass.concat(' animate1');
+			console.log(newClass);
+			btn.onclick = function() {
+				box1.setAttribute('class', newClass)
+			}
+			const box3 = document.getElementById('#box3');
+			box3.style.left = '300px';
+
+			const oUl = document.getElementById('#ul');
+			oUl.onclick = function(e) {
+				console.log('e', e)
+				alert(e.target.textContent)
+			}
+
+			const testApplyVsCall = function (arg1, arg2, arg3) {
+				console.log(arg1, arg2, arg3)
+			}
+			testApplyVsCall(1, 2, 3);
+			testApplyVsCall.apply(this, [2, 3, 4]);
+			testApplyVsCall.call(this, 3, 4, 5)
+
+			function urlJson(url) {
+				if (!url) return;
+				const json = {}
+				const arr1 = url.split('?');
+				if (arr1 && arr1.length > 1) {
+					const str1 = arr1[1];
+					const arr2 = str1.split('&');
+					if (arr2.length > 0) {
+						arr2.forEach(item => {
+							const arr3 = item.split('=');
+							json[arr3[0]] = arr3[1];
+						})
+					}
+				}
+				return json;
+
+			}
+
+			const result = urlJson('https://www.baidu.com/info?name=mili&age=2')
+			console.log('result', result)
+
+
+			let m = 0;
+			function recursion(n) {
+				if (n > 0) {
+					m += n;
+					return recursion(n - 1)
+				}
+				return m
+			}
+
+			const x = recursion(10)
+
+			console.log('x', x)
+
+			
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		}
+	</script>
+	<script type="text/javascript">
+
+		function wrap () {
+			var a = 1;
+	    function main() {
+	      alert(a);
+	      var a = 2;
+	      alert(this.a)
+			}
+			main();
+		}
+		wrap()
+	</script>
+</body>
+</html>
